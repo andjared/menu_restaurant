@@ -139,3 +139,16 @@ const getAllItems = () => {
 window.addEventListener("DOMContentLoaded", () => {
   getAllItems();
 });
+//list items by category
+btns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    search.value = "";
+    const chosenCategory = e.target.innerHTML;
+    if (chosenCategory === "all") {
+      menu.innerHTML = "";
+      getAllItems();
+    } else {
+      menu.innerHTML = getSelectedItems(chosenCategory);
+    }
+  });
+});
