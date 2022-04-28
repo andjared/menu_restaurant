@@ -128,3 +128,34 @@ img {
   list-style: none;
   padding-top: 0.5em;
 }
+@media screen and (max-width: 1400px) {
+  .menu {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 700px) {
+  .menu {
+    margin: 0 auto;
+    width: 80%;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+  }
+  img {
+    max-width: 100%;
+  }
+  .btns {
+    gap: 0.2em;
+  }
+  .btn {
+    padding: 0.5em;
+  }
+  h1 {
+    font-size: 2em;
+  }
+}
