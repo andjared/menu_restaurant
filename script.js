@@ -6,7 +6,7 @@ const data = [
     price: 15.99,
     img: "./images/item-1.jpeg",
     desc: `I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed `,
-    ingreedients: ["flour", "milk", "butter", "nuts"],
+    ingredients: ["flour", "milk", "butter", "nuts"],
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const data = [
     price: 13.99,
     img: "./images/item-2.jpeg",
     desc: `vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats `,
-    ingreedients: ["flour", "beef", "potato"],
+    ingredients: ["flour", "beef", "potato"],
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const data = [
     price: 6.99,
     img: "./images/item-3.jpeg",
     desc: `ombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
-    ingreedients: ["strawberries", "milk", "suggar"],
+    ingredients: ["strawberries", "milk", "suggar"],
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ const data = [
     price: 20.99,
     img: "./images/item-4.jpeg",
     desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut, `,
-    ingreedients: ["eggs", "cheese", "flour"],
+    ingredients: ["eggs", "cheese", "flour"],
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ const data = [
     price: 22.99,
     img: "./images/item-5.jpeg",
     desc: `franzen vegan pabst bicycle rights kickstarter pinterest meditation farm-to-table 90's pop-up `,
-    ingreedients: ["flour", "eggs", "cheese", "mayo", "salad"],
+    ingredients: ["flour", "eggs", "cheese", "mayo", "salad"],
   },
   {
     id: 6,
@@ -51,7 +51,7 @@ const data = [
     price: 18.99,
     img: "./images/item-6.jpeg",
     desc: `Portland chicharrones ethical edison bulb, palo santo craft beer chia heirloom iPhone everyday`,
-    ingreedients: ["chocolate", "milk", "cacao"],
+    ingredients: ["chocolate", "milk", "cacao"],
   },
   {
     id: 7,
@@ -60,7 +60,7 @@ const data = [
     price: 8.99,
     img: "./images/item-7.jpeg",
     desc: `carry jianbing normcore freegan. Viral single-origin coffee live-edge, pork belly cloud bread iceland put a bird `,
-    ingreedients: ["cheese", "saussage", "eggs", "bacon"],
+    ingredients: ["cheese", "saussage", "eggs", "bacon"],
   },
   {
     id: 8,
@@ -69,7 +69,7 @@ const data = [
     price: 12.99,
     img: "./images/item-8.jpeg",
     desc: `on it tumblr kickstarter thundercats migas everyday carry squid palo santo leggings. Food truck truffaut  `,
-    ingreedients: ["flour", "cheese", "beef", "ham", "potato", "onions"],
+    ingredients: ["flour", "cheese", "beef", "ham", "potato", "onions"],
   },
   {
     id: 9,
@@ -78,7 +78,7 @@ const data = [
     price: 16.99,
     img: "./images/item-9.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
-    ingreedients: ["flour", "milk", "butter"],
+    ingredients: ["flour", "milk", "butter"],
   },
   {
     id: 10,
@@ -87,13 +87,13 @@ const data = [
     price: 12.99,
     img: "./images/item-8.jpeg",
     desc: `on it tumblr kickstarter thundercats migas everyday carry squid palo santo leggings. Food truck truffaut  `,
-    ingreedients: ["flour", "potato", "beef", "mayo", "onions"],
+    ingredients: ["flour", "potato", "beef", "mayo", "onions"],
   },
 ];
 const menu = document.querySelector(".menu");
 const btns = document.querySelectorAll(".btn");
 const search = document.querySelector("input");
-const markup = (img, title, price, desc, ingreedients) => {
+const markup = (img, title, price, desc, ingredients) => {
   return `<div class="card">
               <div class="img">
                 <img src=${img} alt=${title} />
@@ -107,19 +107,51 @@ const markup = (img, title, price, desc, ingreedients) => {
                      <p>${desc}</p>
                    </div>
                    <div> 
-                     <span class="ingreedients">ingreedients: </span>
-                    <ul class="ingreedients-list">${ingreedients} </ul>
+                     <span class="ingredients">ingredients: </span>
+                    <ul class="ingredients-list">${ingredients} </ul>
                     </div>
                  </div>
               </div>
               </div>
          </div>`;
 };
+const searchByIngredients = (userInput) => {
+  const allIngredients = data.map((item) => item.ingredients);
+
+  //get matching ingreedients with user input substring
+  const matchedIng = new Set();
+  allIngredients.forEach((arr) => {
+    const matches = arr.filter((ing) => ing.includes(userInput));
+    if (matches.length) {
+      matchedIng.add(matches.join(""));
+    }
+  });
+  if (matchedIng.size > 0) {
+    //if there is matches get food that contains those ingreedients
+    const filteredFood = [];
+    matchedIng.forEach((match) => {
+      const newData = data.filter((item) => item.ingredients.includes(match));
+      filteredFood.push(...newData);
+    });
+
+    const foodByIng = filteredFood.map((food) => {
+      const { title, price, img, desc, ingredients } = food;
+      return markup(img, title, price, desc, ingredients);
+    });
+    return foodByIng.join("");
+  } else {
+    let noMatches = `<div class="no-matches">
+                          <p>Sorry, it looks like there is no food with that ingredient. Try something else. </p>
+                    </div>`;
+    menu.classList.add("no-match-menu");
+    return (menu.innerHTML = noMatches);
+  }
+};
 const getSelectedItems = (selectedCategory) => {
   const selected = data.filter((item) => item.category === selectedCategory);
   const items = selected.map((item) => {
-    const { title, price, img, desc, ingreedients } = item;
-    const ingr = ingreedients.map((ing) => `<li>&nbsp${ing}</>`);
+    const { title, price, img, desc, ingredients } = item;
+    const ingr = ingredients.map((ing) => `<li>&nbsp${ing}</>`);
     return markup(img, title, price, desc, ingr);
   });
   return items.join("");
@@ -151,4 +183,14 @@ btns.forEach((btn) => {
       menu.innerHTML = getSelectedItems(chosenCategory);
     }
   });
+});
+//rerender on user input
+search.addEventListener("keyup", (e) => {
+  let userInput = e.target.value.trim().toLowerCase();
+  if (userInput.length > 0 && userInput !== "") {
+    menu.innerHTML = searchByIngredients(userInput);
+  } else {
+    menu.innerHTML = "";
+    getAllItems();
+  }
 });

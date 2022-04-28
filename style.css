@@ -110,7 +110,7 @@ img {
   font-size: 0.8em;
   color: seagreen;
 }
-.ingreedients {
+.ingredients {
   font-weight: bold;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: rgb(77, 146, 107);
@@ -123,10 +123,21 @@ img {
   display: flex;
   flex-direction: column;
 }
-.ingreedients-list {
+.ingredients-list {
   display: flex;
   list-style: none;
   padding-top: 0.5em;
+}
+.no-match-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.no-matches {
+  margin: 3em auto;
+  text-align: justify;
+  color: var(--main-color);
+  font-size: 1.2em;
 }
 @media screen and (max-width: 1400px) {
   .menu {
