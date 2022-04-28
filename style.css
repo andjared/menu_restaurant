@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --main-color: seagreen;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 1em;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-style: italic;
+  text-transform: capitalize;
+  color: rgb(230, 133, 89);
+  font-size: 3em;
+}
+.btns {
+  display: flex;
+  height: 3em;
+  margin: 2em;
+  min-width: 50%;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.btn {
+  padding: 1em;
+  text-transform: capitalize;
+  color: seagreen;
+  border: none;
+  border-radius: 30%;
+}
+.btn:hover {
+  box-sizing: border-box;
+  cursor: pointer;
+  border-bottom: 0.3em solid rgb(218, 189, 176);
+  font-weight: bold;
+}
+.input-search {
+  min-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+input {
+  height: 3em;
+  border: 0.2em solid seagreen;
+  color: rgb(218, 189, 176);
+}
+input::placeholder {
+  text-transform: capitalize;
+  padding: 0.2em;
+  text-align: justify;
+  color: rgb(240, 109, 49);
+  font-weight: bold;
+  font-style: italic;
+  opacity: 0.5;
+}
+.menu {
+  width: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em;
+  align-self: center;
+  margin: 3em auto;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2em;
+}
+
+.img {
+  min-width: 100%;
+  display: flex;
+}
+img {
+  min-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.info {
+  display: grid;
+  grid-template-rows: 0.5fr 1fr 0.5fr;
+}
+.title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+.title p {
+  text-transform: capitalize;
+  font-size: 1.2em;
+  align-self: flex-start;
+  font-weight: bold;
+  text-align: justify;
+  color: rgb(226, 157, 125);
+}
+.price {
+  padding-left: 2.5em;
+  font-size: 0.8em;
+  color: seagreen;
+}
+.ingreedients {
+  font-weight: bold;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: rgb(77, 146, 107);
+  text-transform: capitalize;
+}
+.desc {
+  text-align: justify;
+  padding: 0.5em 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.ingreedients-list {
+  display: flex;
+  list-style: none;
+  padding-top: 0.5em;
+}
