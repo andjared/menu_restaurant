@@ -100,8 +100,12 @@ const markup = (img, title, price, desc, ingredients) => {
               </div>
               <div class="info">
                   <div class="title">
-                     <p>${title} </p>
-                     <span class="price">$${price}</span>
+                    <div>
+                        <p>${title} </p>
+                    </div>
+                    <div>
+                        <span class="price">$${price}</span>
+                    </div>
                   </div>
                    <div class="desc"> 
                      <p>${desc}</p>
@@ -151,7 +155,7 @@ const getSelectedItems = (selectedCategory) => {
   const selected = data.filter((item) => item.category === selectedCategory);
   const items = selected.map((item) => {
     const { title, price, img, desc, ingredients } = item;
-    const ingr = ingredients.map((ing) => `<li>&nbsp${ing}</>`);
+    const ingr = ingredients.map((ing) => `<li>${ing}</>`);
     return markup(img, title, price, desc, ingr);
   });
   return items.join("");

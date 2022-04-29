@@ -94,7 +94,8 @@ img {
 }
 .title {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  /* justify-content: flex-start; */
   align-items: baseline;
 }
 .title p {
@@ -106,7 +107,8 @@ img {
   color: rgb(226, 157, 125);
 }
 .price {
-  padding-left: 2.5em;
+  align-self: flex-end;
+  /* padding-left: 2.5em; */
   font-size: 0.8em;
   color: seagreen;
 }
