@@ -195,6 +195,7 @@ search.addEventListener("keyup", (e) => {
     menu.innerHTML = searchByIngredients(userInput);
   } else {
     menu.innerHTML = "";
+    menu.classList.remove("no-match-menu");
     getAllItems();
   }
 });
