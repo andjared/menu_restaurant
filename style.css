@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 :root {
-  --main-color: seagreen;
+  --green: seagreen;
+  --orange: rgb(230, 133, 89);
 }
 .container {
   display: flex;
@@ -19,7 +20,7 @@ h1 {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-style: italic;
   text-transform: capitalize;
-  color: rgb(230, 133, 89);
+  color: var(--orange);
   font-size: 3em;
 }
 .btns {
@@ -35,14 +36,14 @@ h1 {
 .btn {
   padding: 1em;
   text-transform: capitalize;
-  color: seagreen;
+  color: var(--green);
   border: none;
   border-radius: 30%;
 }
 .btn:hover {
   box-sizing: border-box;
   cursor: pointer;
-  border-bottom: 0.3em solid rgb(218, 189, 176);
+  border-bottom: 0.3em solid var(--orange);
   font-weight: bold;
 }
 .input-search {
@@ -54,14 +55,16 @@ h1 {
 input {
   padding: 0.5em;
   height: 3em;
-  border: 0.2em solid seagreen;
-  color: rgb(218, 189, 176);
+  border: 0.2em solid var(--green);
+  border-radius: 0.5em;
+  color: var(--orange);
+  outline: none;
 }
 input::placeholder {
   text-transform: capitalize;
   padding: 0.2em;
   text-align: justify;
-  color: rgb(240, 109, 49);
+  color: var(--orange);
   font-weight: bold;
   font-style: italic;
   opacity: 0.5;
@@ -105,17 +108,17 @@ img {
   align-self: flex-start;
   font-weight: bold;
   text-align: justify;
-  color: rgb(226, 157, 125);
+  color: var(--orange);
 }
 .price {
   align-self: flex-end;
   font-size: 0.8em;
-  color: seagreen;
+  color: var(--green);
 }
 .ingredients {
   font-weight: bold;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  color: rgb(77, 146, 107);
+  color: var(--green);
   text-transform: capitalize;
 }
 .desc {
@@ -138,7 +141,7 @@ img {
 .no-matches {
   margin: 3em auto;
   text-align: justify;
-  color: var(--main-color);
+  color: var(--green);
   font-size: 1.2em;
 }
 @media screen and (max-width: 1400px) {
@@ -154,16 +157,16 @@ img {
 
 @media screen and (max-width: 700px) {
   .menu {
-    /* display: flex;
-    flex-direction: column; */
     margin: 2em auto;
     width: 60%;
+  }
+  .no-match-menu {
+    flex-direction: column;
   }
   .card {
     display: flex;
     flex-direction: column;
   }
-
   .btns {
     gap: 0.2em;
   }
@@ -178,6 +181,7 @@ img {
   .menu {
     display: flex;
     flex-direction: column;
+    width: 80%;
   }
   .info {
     display: flex;
