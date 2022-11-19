@@ -90,6 +90,7 @@ const data = [
     ingredients: ["flour", "potato", "beef", "mayo", "onions"],
   },
 ];
+
 const menu = document.querySelector(".menu");
 const btns = document.querySelectorAll(".btn");
 const search = document.querySelector("input");
