@@ -3,10 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 :root {
   --green: seagreen;
   --orange: rgb(230, 133, 89);
 }
+
 .container {
   display: flex;
   flex-direction: column;
@@ -23,6 +25,7 @@ h1 {
   color: var(--orange);
   font-size: 3em;
 }
+
 .btns {
   display: flex;
   height: 3em;
@@ -33,6 +36,7 @@ h1 {
   align-items: center;
   gap: 1em;
 }
+
 .btn {
   padding: 1em;
   text-transform: capitalize;
@@ -40,18 +44,21 @@ h1 {
   border: none;
   border-radius: 30%;
 }
+
 .btn:hover {
   box-sizing: border-box;
   cursor: pointer;
   border-bottom: 0.3em solid var(--orange);
   font-weight: bold;
 }
+
 .input-search {
   min-width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 input {
   padding: 0.5em;
   height: 3em;
@@ -60,6 +67,7 @@ input {
   color: var(--orange);
   outline: none;
 }
+
 input::placeholder {
   text-transform: capitalize;
   padding: 0.2em;
@@ -69,6 +77,7 @@ input::placeholder {
   font-style: italic;
   opacity: 0.5;
 }
+
 .menu {
   width: 60%;
   display: grid;
@@ -80,114 +89,122 @@ input::placeholder {
 
 .card {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1.5fr 2fr;
   gap: 2em;
 }
 
-.img {
-  min-width: 10em;
-  max-height: 10em;
-}
-img {
-  align-self: center;
+.photo {
   width: 100%;
-  height: 100%;
+  height: 10em;
   object-fit: cover;
 }
+
 .info {
   display: grid;
-  grid-template-rows: 0.5fr 1fr 0.5fr;
+  grid-template-rows: repeat(1fr);
+  gap: 0.2em;
 }
+
 .title {
   display: flex;
   justify-content: space-between;
 }
+
 .title p {
   text-transform: capitalize;
   font-size: 1.2em;
-  align-self: flex-start;
   font-weight: bold;
   text-align: justify;
   color: var(--orange);
 }
+
 .price {
-  align-self: flex-end;
   font-size: 0.8em;
   color: var(--green);
 }
+
 .ingredients {
   font-weight: bold;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: var(--green);
   text-transform: capitalize;
 }
+
 .desc {
   text-align: justify;
-  padding: 0.5em 0;
   list-style: none;
   display: flex;
   flex-direction: column;
 }
+
 .ingredients-list {
   display: flex;
   list-style: none;
   padding-top: 0.5em;
 }
+
 .no-match-menu {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .no-matches {
   margin: 3em auto;
   text-align: justify;
   color: var(--green);
   font-size: 1.2em;
 }
+
 @media screen and (max-width: 1400px) {
   .menu {
     grid-template-columns: 1fr;
     width: 50%;
   }
+
   .card {
     grid-template-columns: 1fr 1.5fr;
     gap: 1em;
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 820px) {
   .menu {
     margin: 2em auto;
     width: 60%;
   }
+
   .no-match-menu {
     flex-direction: column;
   }
+
   .card {
     display: flex;
     flex-direction: column;
   }
+
   .btns {
     gap: 0.2em;
   }
+
   .btn {
     padding: 0.5em;
   }
+
   h1 {
     font-size: 2em;
   }
 }
+
 @media screen and (max-width: 400px) {
   .menu {
     display: flex;
     flex-direction: column;
     width: 80%;
   }
+
   .info {
     display: flex;
     flex-direction: column;
-  }
-  .img {
-    max-height: none;
   }
 }
